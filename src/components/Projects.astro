@@ -1,0 +1,64 @@
+---
+import AndroidIcon from "../components/icons/AndroidIcon.astro"
+import AppleIcon from "../components/icons/AppleIcon.astro"
+import FlutterIcon from "../components/icons/FlutterIcon.astro"
+import DartIcon from "../components/icons/DartIcon.astro"
+const TAGS = {
+    ANDROID: {
+        name: "Android",
+        class: "bg-[#A4C639] text-white",
+        icon: AndroidIcon,
+    },
+    IOS: {
+        name: "IOS",
+        class: "bg-[#A4C639] text-white",
+        icon: AppleIcon,
+    },
+    FLUTTER: {
+        name: "Flutter",
+        class: "bg-[#A4C639] text-white",
+        icon: FlutterIcon,
+    },
+    DART: {
+        name: "Dart",
+        class: "bg-[#A4C639] text-white",
+        icon: DartIcon,
+    },
+};
+
+const PROJECTS = [
+    {
+        title: "App móvil SO2SPORT Reto 100X100",
+        description:
+            "Aplicacion movil desarrollada en Flutter para poder ser ejecutada en dispositivos Android e IOS. Verción móvil de la página Web de SO2SPORT reto 100X100 que permite a los usuarios seguir su progreso en el reto, ademas de ver los videos de rutinas de ejerciocios del reto",
+        link: "#",
+        github: "#",
+        image: "../../public/images/reto100.webp",
+        tags: [TAGS.ANDROID, TAGS.IOS, TAGS.FLUTTER, TAGS.DART],
+    },
+];
+---
+
+{
+    PROJECTS.map(({ title, description, tags, image }) => (
+        <article>
+            <h3 class="text-2xl font-semibold text-orange-200 mb-2">{title}</h3>
+            <p class="text-lg mb-4 text-pretty">{description}</p>
+            <ul class="flex gap-2 mb-4">
+                {tags.map((tag) => (
+                    <li>
+                        <span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-sm me-2 dark:bg-gray-700 dark:text-gray-400 border border-gray-500 ">
+                            <tag.icon class="size-5 mr-2"/>
+                            {tag.name}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+            <img
+                class="rounded shadow-2xl shadow-white/10"
+                alt="Captura de pantalla del proyecto"
+                src={image}
+            />
+        </article>
+    ))
+}
